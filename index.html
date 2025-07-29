@@ -9,42 +9,32 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width:100%; min-height:100%; background:#000; color:#fff; font-family:'Open Sans',sans-serif; }
-    .container { max-width: 100%; margin: 0 auto; padding: 0 1rem; }
+    .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
 
-    /* Wrapper matches grid width */
-    .wrapper {
-      margin: 0 auto;
-      width: calc(3*290px + 2*25px);
-    }
-    @media (min-width:600px) and (max-width:899px) {
-      .wrapper { width: calc(2*290px + 25px); }
-    }
-    @media (max-width:599px) {
-      .wrapper { width: auto; }
-    }
+    .wrapper { display: flex; flex-direction: column; align-items: center; }
 
     .header { text-align: center; padding: 2rem 0 1rem; }
-    .brand { display: inline-flex; align-items: center; justify-content: center; }
-    .brand img.mascot { max-height: 220px; margin-right: 1rem; }
-    .titles { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
-    .titles img.title { max-height: 160px; }
-    .titles img.subtitle { max-height: 40px; opacity: 0.8; }
+    .brand { display: inline-flex; align-items: center; }
+    .brand img.mascot { max-height:220px; margin-right:1rem; }
+    .titles { display:flex; flex-direction:column; align-items:center; gap:0.25rem; }
+    .titles img.title { max-height:160px; }
+    .titles img.subtitle { max-height:40px; opacity:0.8; }
 
     .grid {
-      display: grid;
-      grid-template-columns: 1fr;
+      display: inline-grid;
+      grid-auto-flow: row;
       gap: 25px;
-      justify-items: center;
+      grid-template-columns: auto;
     }
-    @media (min-width:600px) {
+    @media (min-width: 600px) {
       .grid {
         grid-template-columns: repeat(2, auto);
       }
     }
-    @media (min-width:900px) {
+    @media (min-width: 900px) {
       .grid {
-        grid-template-columns: repeat(3, auto);
         grid-auto-flow: column;
+        grid-template-columns: repeat(3, auto);
         grid-template-rows: repeat(9, auto);
       }
     }
@@ -69,7 +59,7 @@
 <body>
   <div class="container">
     <div class="wrapper">
-      <header class="header">
+      <div class="header">
         <div class="brand">
           <img src="assets/LC-logo-small.png" alt="Octopus Mascot" class="mascot">
           <div class="titles">
@@ -77,7 +67,7 @@
             <img src="assets/archive-logo.png" alt="Archive Subtitle" class="subtitle">
           </div>
         </div>
-      </header>
+      </div>
       <div class="grid" id="shows-container"></div>
     </div>
   </div>
