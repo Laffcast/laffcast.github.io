@@ -1,4 +1,4 @@
-<!-- Build 16 – Octopus centering fix and cache-bust -->
+<!-- Build 17 – Center header via text-align and inline-grid grid -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,25 +10,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" 
         rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
-    html, body { width:100%; min-height:100%; background:#000; color:#fff; 
-                 font-family:'Open Sans',sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width:100%; min-height:100%; background:#000; color:#fff; font-family:'Open Sans',sans-serif; }
     .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
-    .wrapper { display:flex; flex-direction:column; align-items:center; }
-    .header { text-align:center; padding:2rem 0 1rem; }
-    .brand { display:inline-flex; align-items:center; }
+    .wrapper { text-align: center; } /* center inline elements inside */
+
+    .header { padding: 2rem 0 1rem; }
+    .brand { display: inline-flex; align-items: center; }
     .brand img.mascot { max-height:220px; margin-right:1rem; }
     .titles { display:flex; flex-direction:column; align-items:center; gap:0.25rem; }
     .titles img.title { max-height:160px; }
     .titles img.subtitle { max-height:40px; opacity:0.8; }
-    .grid { display:inline-grid; grid-auto-flow:row; gap:25px; grid-template-columns: auto; }
+
+    .grid { display:inline-grid; grid-auto-flow:row; gap:25px; grid-template-columns:auto; }
     @media (min-width:600px) {
       .grid { grid-template-columns: repeat(2, auto); }
     }
     @media (min-width:900px) {
-      .grid { grid-template-columns: repeat(3, auto); 
-             grid-auto-flow: column; grid-template-rows: repeat(9, auto); }
+      .grid { display:inline-grid; grid-template-columns: repeat(3, auto); grid-auto-flow: column; grid-template-rows: repeat(9, auto); }
     }
+
     .show-card { display:flex; align-items:center; justify-content:center; }
     .show-card img.logo { width:290px; height:65px; object-fit:contain; }
     .show-card.apah img.logo { width:100px; height:135px; object-fit:contain; }
@@ -51,14 +52,12 @@
   </div>
   <script>
     const shows = [
-      'logos/KM-logo.png','logos/TDS-logo.png','logos/DR-logo.png',
-      'logos/MSW-logo.png','logos/RR-logo.png','logos/JKS-logo.png',
-      'logos/MWOT-logo.png','logos/DDP-logo.png','logos/APAH-logo.png',
-      'logos/TPH-logo.png','logos/BADATP-logo.png','logos/ETC-logo.png',
-      'logos/SoLR-logo.png','logos/RS-logo.png','logos/TPAH-logo.png',
-      'logos/TTT-logo.png','logos/TDL-logo.png','logos/WMCJ-logo.png',
-      'logos/VA-logo.png','logos/DAOR-logo.png','logos/MSS-logo.png',
-      'logos/TTO-logo.png','logos/TBD-logo.png','logos/TDP-logo.png',
+      'logos/KM-logo.png','logos/TDS-logo.png','logos/DR-logo.png','logos/MSW-logo.png',
+      'logos/RR-logo.png','logos/JKS-logo.png','logos/MWOT-logo.png','logos/DDP-logo.png',
+      'logos/APAH-logo.png','logos/TPH-logo.png','logos/BADATP-logo.png','logos/ETC-logo.png',
+      'logos/SoLR-logo.png','logos/RS-logo.png','logos/TPAH-logo.png','logos/TTT-logo.png',
+      'logos/TDL-logo.png','logos/WMCJ-logo.png','logos/VA-logo.png','logos/DAOR-logo.png',
+      'logos/MSS-logo.png','logos/TTO-logo.png','logos/TBD-logo.png','logos/TDP-logo.png',
       'logos/SG-logo.png','logos/DCDMTS-logo.png','logos/BS-logo.png'
     ];
     const container = document.getElementById('shows-container');
