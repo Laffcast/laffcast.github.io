@@ -4,25 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laffcast Archive</title>
-  <link rel="icon" href="/assets/LC-logo-small.png" type="image/png">
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
   <style>
+    /* Reset & Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; min-height: 100%; background: #000; color: #fff; }
+    html, body { width: 100%; min-height: 100%; background-color: #000; color: #fff; }
     body { font-family: 'Open Sans', sans-serif; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Shared container */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+    /* Header */
     .header { text-align: center; padding: 2rem 0 1rem; }
     .brand { display: inline-flex; align-items: center; justify-content: center; }
     .brand img.mascot { max-height: 200px; margin-right: 1rem; }
     .brand .titles { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
     .brand .titles img.title { max-height: 160px; }
     .brand .titles img.subtitle { max-height: 40px; opacity: 0.8; }
-    .grid { display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: repeat(9, auto);
-            grid-auto-flow: column; gap: 0.25rem; }
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2,1fr); grid-template-rows: none; grid-auto-flow: row; } }
+
+    /* Logo Grid */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.25rem; grid-auto-flow: column; grid-template-rows: repeat(9, auto); }
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); grid-auto-flow: row; grid-template-rows: none; } }
     @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-    .show-card { background: #000; border-radius: 8px; display:flex; align-items:center; justify-content:center; aspect-ratio:1/1; }
+
+    .show-card { background-color: #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; aspect-ratio: 1/1; }
     .show-card img.logo { width: 80%; height: auto; object-fit: contain; }
     .show-card.apah img.logo { width: 150px; height: auto; }
   </style>
@@ -30,56 +41,41 @@
 <body>
   <header class="header container">
     <div class="brand">
-      <img src="/assets/LC-logo-small.png" alt="Octopus Mascot" class="mascot">
+      <img src="assets/LC-logo-small.png" alt="Octopus Mascot" class="mascot">
       <div class="titles">
-        <img src="/assets/LCP-logo.png" alt="Laffcast Title" class="title">
-        <img src="/assets/archive-logo.png" alt="Archive Subtitle" class="subtitle">
+        <img src="assets/LCP-logo.png" alt="Laffcast Title" class="title">
+        <img src="assets/archive-logo.png" alt="Archive Subtitle" class="subtitle">
       </div>
     </div>
   </header>
+
   <section class="container">
     <div class="grid" id="shows-container"></div>
   </section>
+
   <script>
+    // Show order with APAH at the bottom-left
     const shows = [
-      // Column 1 without APAH, then APAH last
-      { logo: 'logos/KM-logo.png' },
-      { logo: 'logos/TDS-logo.png' },
-      { logo: 'logos/DR-logo.png' },
-      { logo: 'logos/MSW-logo.png' },
-      { logo: 'logos/RR-logo.png' },
-      { logo: 'logos/JKS-logo.png' },
-      { logo: 'logos/MWOT-logo.png' },
-      { logo: 'logos/DDP-logo.png' },
-      { logo: 'logos/APAH-logo.png', special: true },
+      // Column 1 (8 shows, APAH special at end)
+      'logos/KM-logo.png', 'logos/TDS-logo.png', 'logos/DR-logo.png',
+      'logos/MSW-logo.png', 'logos/RR-logo.png', 'logos/JKS-logo.png',
+      'logos/MWOT-logo.png', 'logos/DDP-logo.png', 'logos/APAH-logo.png',
       // Column 2
-      { logo: 'logos/TPH-logo.png' },
-      { logo: 'logos/BADATP-logo.png' },
-      { logo: 'logos/ETC-logo.png' },
-      { logo: 'logos/SoL-logo.png' },
-      { logo: 'logos/RS-logo.png' },
-      { logo: 'logos/TPAH-logo.png' },
-      { logo: 'logos/TTT-logo.png' },
-      { logo: 'logos/TDL-logo.png' },
-      { logo: 'logos/WMCJ-logo.png' },
+      'logos/TPH-logo.png', 'logos/BADATP-logo.png', 'logos/ETC-logo.png',
+      'logos/SoLR-logo.png', 'logos/RS-logo.png', 'logos/TPAH-logo.png',
+      'logos/TTT-logo.png', 'logos/TDL-logo.png', 'logos/WMCJ-logo.png',
       // Column 3
-      { logo: 'logos/VA-logo.png' },
-      { logo: 'logos/DAOR-logo.png' },
-      { logo: 'logos/MSS-logo.png' },
-      { logo: 'logos/TTO-logo.png' },
-      { logo: 'logos/TBD-logo.png' },
-      { logo: 'logos/TDP-logo.png' },
-      { logo: 'logos/SG-logo.png' },
-      { logo: 'logos/DCDMTS-logo.png' },
-      { logo: 'logos/BS-logo.png' }
+      'logos/VA-logo.png', 'logos/DAOR-logo.png', 'logos/MSS-logo.png',
+      'logos/TTO-logo.png', 'logos/TBD-logo.png', 'logos/TDP-logo.png',
+      'logos/SG-logo.png', 'logos/DCDMTS-logo.png', 'logos/BS-logo.png'
     ];
     const container = document.getElementById('shows-container');
-    shows.forEach(item => {
+    shows.forEach((path, index) => {
       const card = document.createElement('div');
-      card.className = 'show-card' + (item.special ? ' apah' : '');
+      card.className = 'show-card' + (index === 8 ? ' apah' : '');
       const img = document.createElement('img');
-      img.src = '/assets/' + item.logo;
-      img.alt = 'Show Logo';
+      img.src = 'assets/' + path;
+      img.alt = path.split('/')[1].replace('-logo.png','');
       img.className = 'logo';
       card.appendChild(img);
       container.appendChild(card);
