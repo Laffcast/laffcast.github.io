@@ -1,4 +1,4 @@
-<!-- Build 18 – Wrapper width for header alignment -->
+<!-- Build 19 – Flex wrapper centering, width auto -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,23 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laffcast Archive</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" 
         rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width:100%; min-height:100%; background:#000; color:#fff; font-family:'Open Sans',sans-serif; }
     .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
+
     .wrapper {
-      text-align: center;
-      /* match grid width on desktop */
-      width: calc(3*290px + 2*25px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: auto;
       margin: 0 auto;
-    }
-    @media (min-width:600px) and (max-width:899px) {
-      .wrapper { width: calc(2*290px + 25px); }
-    }
-    @media (max-width:599px) {
-      .wrapper { width: auto; }
+      text-align: center;
     }
 
     .header { padding: 2rem 0 1rem; }
@@ -39,10 +36,10 @@
       gap: 25px;
       grid-template-columns: auto;
     }
-    @media (min-width:600px) {
+    @media (min-width: 600px) {
       .grid { grid-template-columns: repeat(2, auto); }
     }
-    @media (min-width:900px) {
+    @media (min-width: 900px) {
       .grid { grid-auto-flow: column; grid-template-columns: repeat(3, auto); grid-template-rows: repeat(9, auto); }
     }
 
