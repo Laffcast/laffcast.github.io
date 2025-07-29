@@ -11,46 +11,23 @@
   <style>
     /* Reset & Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; background: #000; color: #fff; }
+    html, body { width: 100%; min-height: 100%; background: #000; color: #fff; }
     body { font-family: 'Open Sans', sans-serif; }
     a { text-decoration: none; color: inherit; }
 
     /* Shared container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
 
     /* Header */
-    .header {
-      text-align: center;
-      padding: 2rem 0 1rem;
-    }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .brand img.mascot {
-      max-height: 200px;
-      margin-right: 1rem;
-    }
-    .brand .titles {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
+    .header { text-align: center; padding: 2rem 0 1rem; }
+    .brand { display: inline-flex; align-items: center; justify-content: center; }
+    .brand img.mascot { max-height: 200px; margin-right: 1rem; }
+    .brand .titles { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
     .brand .titles img.title { max-height: 160px; }
     .brand .titles img.subtitle { max-height: 40px; opacity: 0.8; }
 
     /* Logo Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 0.5rem;
-    }
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; }
     @media (max-width: 900px) { .grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
 
@@ -61,16 +38,19 @@
       align-items: center;
       justify-content: center;
       aspect-ratio: 1/1;
-      cursor: pointer;
-      transition: transform 0.2s;
+      cursor: default;
     }
-    .show-card:hover { transform: translateY(-4px) scale(1.02); }
     .show-card img.logo {
-      max-width: 60%;
-      max-height: 60%;
+      width: 150px;
+      height: 150px;
       object-fit: contain;
     }
-    .show-card.apah img.logo { max-height: 80%; }
+    /* APAH uses same placeholder but CSS scales it bigger */
+    .show-card.apah img.logo {
+      width: 150px;
+      height: auto;
+      max-height: none;
+    }
   </style>
 </head>
 <body>
@@ -96,43 +76,43 @@
   <script>
     const shows = [
       // Column 1
-      { id:'KMS', logo:'logos/KMS.png' },
-      { id:'TDS', logo:'logos/TDS.png' },
-      { id:'DR', logo:'logos/DR.png' },
-      { id:'MSW', logo:'logos/MSW.png' },
-      { id:'RR', logo:'logos/RR.png' },
-      { id:'APAH', logo:'logos/APAH.png' },
-      { id:'JKS', logo:'logos/JKS.png' },
-      { id:'MWT', logo:'logos/MWT.png' },
-      { id:'DDP', logo:'logos/DDP.png' },
+      { id:'KMS' },
+      { id:'TDS' },
+      { id:'DR' },
+      { id:'MSW' },
+      { id:'RR' },
+      { id:'APAH' },
+      { id:'JKS' },
+      { id:'MWT' },
+      { id:'DDP' },
       // Column 2
-      { id:'TPH', logo:'logos/TPH.png' },
-      { id:'BADP', logo:'logos/BADP.png' },
-      { id:'ET', logo:'logos/ET.png' },
-      { id:'SOL', logo:'logos/SOL.png' },
-      { id:'RS', logo:'logos/RS.png' },
-      { id:'PAH', logo:'logos/PAH.png' },
-      { id:'TTT', logo:'logos/TTT.png' },
-      { id:'TDL', logo:'logos/TDL.png' },
-      { id:'WMCJ', logo:'logos/WMCJ.png' },
+      { id:'TPH' },
+      { id:'BADP' },
+      { id:'ET' },
+      { id:'SOL' },
+      { id:'RS' },
+      { id:'PAH' },
+      { id:'TTT' },
+      { id:'TDL' },
+      { id:'WMCJ' },
       // Column 3
-      { id:'VA', logo:'logos/VA.png' },
-      { id:'DAO', logo:'logos/DAO.png' },
-      { id:'MSS', logo:'logos/MSS.png' },
-      { id:'TTO', logo:'logos/TTO.png' },
-      { id:'BD', logo:'logos/BD.png' },
-      { id:'TDP', logo:'logos/TDP.png' },
-      { id:'SG', logo:'logos/SG.png' },
-      { id:'DCDMS', logo:'logos/DCDMS.png' },
-      { id:'BS', logo:'logos/BS.png' }
+      { id:'VA' },
+      { id:'DAO' },
+      { id:'MSS' },
+      { id:'TTO' },
+      { id:'BD' },
+      { id:'TDP' },
+      { id:'SG' },
+      { id:'DCDMS' },
+      { id:'BS' }
     ];
     const container = document.getElementById('shows-container');
-    shows.forEach(show => {
+    shows.forEach(s => {
       const card = document.createElement('div');
-      card.className = 'show-card' + (show.id === 'APAH' ? ' apah' : '');
+      card.className = 'show-card' + (s.id==='APAH'?' apah':'');
       const img = document.createElement('img');
-      img.src = `assets/${show.logo}`;
-      img.alt = show.id;
+      img.src = `https://via.placeholder.com/150x150?text=${s.id}`;
+      img.alt = s.id;
       img.className = 'logo';
       card.appendChild(img);
       container.appendChild(card);
