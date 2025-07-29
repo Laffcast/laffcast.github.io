@@ -1,4 +1,4 @@
-<!-- Build 17 – Center header via text-align and inline-grid grid -->
+<!-- Build 18 – Wrapper width for header alignment -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,32 +7,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laffcast Archive</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" 
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width:100%; min-height:100%; background:#000; color:#fff; font-family:'Open Sans',sans-serif; }
     .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
-    .wrapper { text-align: center; } /* center inline elements inside */
+    .wrapper {
+      text-align: center;
+      /* match grid width on desktop */
+      width: calc(3*290px + 2*25px);
+      margin: 0 auto;
+    }
+    @media (min-width:600px) and (max-width:899px) {
+      .wrapper { width: calc(2*290px + 25px); }
+    }
+    @media (max-width:599px) {
+      .wrapper { width: auto; }
+    }
 
     .header { padding: 2rem 0 1rem; }
     .brand { display: inline-flex; align-items: center; }
     .brand img.mascot { max-height:220px; margin-right:1rem; }
-    .titles { display:flex; flex-direction:column; align-items:center; gap:0.25rem; }
+    .titles { display: flex; flex-direction: column; align-items: center; gap:0.25rem; }
     .titles img.title { max-height:160px; }
     .titles img.subtitle { max-height:40px; opacity:0.8; }
 
-    .grid { display:inline-grid; grid-auto-flow:row; gap:25px; grid-template-columns:auto; }
+    .grid {
+      display: inline-grid;
+      grid-auto-flow: row;
+      gap: 25px;
+      grid-template-columns: auto;
+    }
     @media (min-width:600px) {
       .grid { grid-template-columns: repeat(2, auto); }
     }
     @media (min-width:900px) {
-      .grid { display:inline-grid; grid-template-columns: repeat(3, auto); grid-auto-flow: column; grid-template-rows: repeat(9, auto); }
+      .grid { grid-auto-flow: column; grid-template-columns: repeat(3, auto); grid-template-rows: repeat(9, auto); }
     }
 
-    .show-card { display:flex; align-items:center; justify-content:center; }
-    .show-card img.logo { width:290px; height:65px; object-fit:contain; }
-    .show-card.apah img.logo { width:100px; height:135px; object-fit:contain; }
+    .show-card { display: flex; align-items: center; justify-content: center; }
+    .show-card img.logo { width: 290px; height: 65px; object-fit: contain; }
+    .show-card.apah img.logo { width: 100px; height: 135px; object-fit: contain; }
   </style>
 </head>
 <body>
