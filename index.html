@@ -4,62 +4,102 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laffcast Archive</title>
+  <!-- Favicon -->
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
   <style>
+    /* Reset & Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width:100%; min-height:100%; background:#000; color:#fff; }
-    body { font-family:'Open Sans',sans-serif; }
-    a { text-decoration:none; color:inherit; }
-    .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
-    .header { text-align:center; padding:2rem 0 1rem; }
-    .brand { display:inline-flex; align-items:center; justify-content:center; }
-    .brand img.mascot { max-height:200px; margin-right:1rem; }
-    .brand .titles { display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
-    .brand .titles img.title { max-height:160px; }
-    .brand .titles img.subtitle { max-height:40px; opacity:0.8; }
-    .grid { display:grid; grid-template-columns:repeat(3,1fr); grid-auto-flow:column; grid-template-rows:repeat(9,auto); gap:0.125rem; }
-    @media(max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr); grid-auto-flow:row; grid-template-rows:none; } }
-    @media(max-width:600px){ .grid{ grid-template-columns:1fr; } }
-    .show-card{ background:#000; border-radius:8px; display:flex; align-items:center; justify-content:center; aspect-ratio:1/1; }
-    .show-card img.logo{ width:80%; height:auto; object-fit:contain; }
-    .show-card.apah img.logo{ width:150px; height:auto; }
+    html, body { width: 100%; min-height: 100%; background: #000; color: #fff; }
+    body { font-family: 'Open Sans', sans-serif; }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+    /* Header */
+    .header { text-align: center; padding: 2rem 0 1rem; }
+    .brand { display: inline-flex; align-items: center; justify-content: center; }
+    .brand img.mascot { max-height: 200px; margin-right: 1rem; }
+    .titles { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+    .titles img.title { max-height: 160px; }
+    .titles img.subtitle { max-height: 40px; opacity: 0.8; }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-flow: column;
+      grid-template-rows: repeat(9, auto);
+      gap: 1rem;
+    }
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: row;
+        grid-template-rows: none;
+      }
+    }
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .show-card {
+      background: #000;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1 / 1;
+    }
+    .show-card img.logo {
+      width: 80%;
+      height: auto;
+      object-fit: contain;
+    }
+    .show-card.apah img.logo {
+      width: 150px;
+      height: auto;
+    }
   </style>
 </head>
 <body>
   <header class="header container">
     <div class="brand">
-      <img src="assets/LC-logo-small.png" alt="Mascot" class="mascot">
+      <img src="assets/LC-logo-small.png" alt="Octopus Mascot" class="mascot">
       <div class="titles">
-        <img src="assets/LCP-logo.png" alt="Laffcast" class="title">
-        <img src="assets/archive-logo.png" alt="Archive" class="subtitle">
+        <img src="assets/LCP-logo.png" alt="Laffcast Title" class="title">
+        <img src="assets/archive-logo.png" alt="Archive Subtitle" class="subtitle">
       </div>
     </div>
   </header>
-  <section class="container">
+  <main class="container">
     <div class="grid" id="shows-container"></div>
-  </section>
+  </main>
   <script>
     const shows = [
-      // Column 1 (8 logos then APAH)
-      'logos/KM-logo.png','logos/TDS-logo.png','logos/DR-logo.png','logos/MSW-logo.png',
-      'logos/RR-logo.png','logos/JKS-logo.png','logos/MWOT-logo.png','logos/DDP-logo.png',
-      'logos/APAH-logo.png',
+      // Column 1 then APAH at bottom left
+      'logos/KM-logo.png','logos/TDS-logo.png','logos/DR-logo.png',
+      'logos/MSW-logo.png','logos/RR-logo.png','logos/JKS-logo.png',
+      'logos/MWOT-logo.png','logos/DDP-logo.png','logos/APAH-logo.png',
       // Column 2
-      'logos/TPH-logo.png','logos/BADATP-logo.png','logos/ETC-logo.png','logos/SoLR-logo.png',
-      'logos/RS-logo.png','logos/TPAH-logo.png','logos/TTT-logo.png','logos/TDL-logo.png','logos/WMCJ-logo.png',
+      'logos/TPH-logo.png','logos/BADATP-logo.png','logos/ETC-logo.png',
+      'logos/SoLR-logo.png','logos/RS-logo.png','logos/TPAH-logo.png',
+      'logos/TTT-logo.png','logos/TDL-logo.png','logos/WMCJ-logo.png',
       // Column 3
-      'logos/VA-logo.png','logos/DAOR-logo.png','logos/MSS-logo.png','logos/TTO-logo.png',
-      'logos/TBD-logo.png','logos/TDP-logo.png','logos/SG-logo.png','logos/DCDMTS-logo.png','logos/BS-logo.png'
+      'logos/VA-logo.png','logos/DAOR-logo.png','logos/MSS-logo.png',
+      'logos/TTO-logo.png','logos/TBD-logo.png','logos/TDP-logo.png',
+      'logos/SG-logo.png','logos/DCDMTS-logo.png','logos/BS-logo.png'
     ];
     const container = document.getElementById('shows-container');
-    shows.forEach((path,index)=>{
-      const card=document.createElement('div');
-      card.className='show-card'+(index===8?' apah':'');
-      const img=document.createElement('img');
-      img.src='assets/'+path;
-      img.alt=path.split('/')[1].replace('-logo.png','');
-      img.className='logo';
+    shows.forEach((logoPath, idx) => {
+      const card = document.createElement('div');
+      card.className = 'show-card' + (idx === 8 ? ' apah' : '');
+      const img = document.createElement('img');
+      img.src = 'assets/' + logoPath;
+      img.alt = logoPath.split('/')[1].replace('-logo.png','');
+      img.className = 'logo';
       card.appendChild(img);
       container.appendChild(card);
     });
