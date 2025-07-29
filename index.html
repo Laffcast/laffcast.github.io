@@ -1,4 +1,4 @@
-<!-- Build 19 – Flex wrapper centering, width auto -->
+<!-- Build 20 – Larger header graphics -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,22 +13,21 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width:100%; min-height:100%; background:#000; color:#fff; font-family:'Open Sans',sans-serif; }
     .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
-
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
       width: auto;
       margin: 0 auto;
-      text-align: center;
     }
-
-    .header { padding: 2rem 0 1rem; }
+    .header { padding: 2.5rem 0 1.5rem; }
     .brand { display: inline-flex; align-items: center; }
-    .brand img.mascot { max-height:220px; margin-right:1rem; }
-    .titles { display: flex; flex-direction: column; align-items: center; gap:0.25rem; }
-    .titles img.title { max-height:160px; }
-    .titles img.subtitle { max-height:40px; opacity:0.8; }
+    /* Increased heights: title+subtitle combined = 240px, octopus equal */
+    .brand img.mascot { max-height: 240px; margin-right: 1rem; }
+    .titles { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .titles img.title { max-height: 200px; }
+    .titles img.subtitle { max-height: 40px; opacity: 0.8; }
 
     .grid {
       display: inline-grid;
@@ -36,16 +35,16 @@
       gap: 25px;
       grid-template-columns: auto;
     }
-    @media (min-width: 600px) {
+    @media (min-width:600px) {
       .grid { grid-template-columns: repeat(2, auto); }
     }
-    @media (min-width: 900px) {
+    @media (min-width:900px) {
       .grid { grid-auto-flow: column; grid-template-columns: repeat(3, auto); grid-template-rows: repeat(9, auto); }
     }
 
-    .show-card { display: flex; align-items: center; justify-content: center; }
-    .show-card img.logo { width: 290px; height: 65px; object-fit: contain; }
-    .show-card.apah img.logo { width: 100px; height: 135px; object-fit: contain; }
+    .show-card { display:flex; align-items:center; justify-content:center; }
+    .show-card img.logo { width:290px; height:65px; object-fit:contain; }
+    .show-card.apah img.logo { width:100px; height:135px; object-fit:contain; }
   </style>
 </head>
 <body>
