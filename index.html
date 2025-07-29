@@ -1,4 +1,4 @@
-<!-- Build 20 – Larger header graphics -->
+<!-- Build 21 – Header as explicit grid for perfect column centering -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,33 +7,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laffcast Archive</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" 
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin:0; padding:0; }
     html, body { width:100%; min-height:100%; background:#000; color:#fff; font-family:'Open Sans',sans-serif; }
     .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      width: auto;
-      margin: 0 auto;
-    }
-    .header { padding: 2.5rem 0 1.5rem; }
-    .brand { display: inline-flex; align-items: center; }
-    /* Increased heights: title+subtitle combined = 240px, octopus equal */
-    .brand img.mascot { max-height: 240px; margin-right: 1rem; }
-    .titles { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-    .titles img.title { max-height: 200px; }
-    .titles img.subtitle { max-height: 40px; opacity: 0.8; }
 
+    /* Header grid to align octopus/title above 2nd column exactly */
+    .header-grid {
+      display: grid;
+      grid-template-columns: 290px 25px 290px 25px 290px;
+      align-items: center;
+      margin: 2rem auto 1rem;
+    }
+    .header-grid .mascot { grid-column: 1; max-height: 220px; }
+    .header-grid .titles { grid-column: 3; display:flex; flex-direction:column; align-items:center; gap:0.25rem; }
+    .titles img.title { max-height:200px; }
+    .titles img.subtitle { max-height:40px; opacity:0.8; }
+
+    @media (max-width:599px) {
+      .header-grid {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+    }
+
+    /* Logo grid */
     .grid {
       display: inline-grid;
       grid-auto-flow: row;
-      gap: 25px;
+      gap:25px;
       grid-template-columns: auto;
+      justify-content: center;
     }
     @media (min-width:600px) {
       .grid { grid-template-columns: repeat(2, auto); }
@@ -43,24 +49,20 @@
     }
 
     .show-card { display:flex; align-items:center; justify-content:center; }
-    .show-card img.logo { width:290px; height:65px; object-fit:contain; }
-    .show-card.apah img.logo { width:100px; height:135px; object-fit:contain; }
+    .show-card img.logo { width:290px; height:65px; object-fit: contain; }
+    .show-card.apah img.logo { width:100px; height:135px; object-fit: contain; }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="wrapper">
-      <header class="header">
-        <div class="brand">
-          <img src="assets/LC-logo-small.png" alt="Octopus Mascot" class="mascot">
-          <div class="titles">
-            <img src="assets/LCP-logo.png" alt="Laffcast Title" class="title">
-            <img src="assets/archive-logo.png" alt="Archive Subtitle" class="subtitle">
-          </div>
-        </div>
-      </header>
-      <div class="grid" id="shows-container"></div>
+    <div class="header-grid">
+      <img src="assets/LC-logo-small.png" alt="Octopus Mascot" class="mascot">
+      <div class="titles">
+        <img src="assets/LCP-logo.png" alt="Laffcast Title" class="title">
+        <img src="assets/archive-logo.png" alt="Archive Subtitle" class="subtitle">
+      </div>
     </div>
+    <div class="grid" id="shows-container"></div>
   </div>
   <script>
     const shows = [
@@ -75,10 +77,10 @@
     const container = document.getElementById('shows-container');
     shows.forEach((path, idx) => {
       const card = document.createElement('div');
-      card.className = 'show-card' + (idx === 8 ? ' apah' : '');
+      card.className = 'show-card' + (idx===8?' apah':'');
       const img = document.createElement('img');
       img.src = 'assets/' + path;
-      img.alt = path.split('/')[1].replace('-logo.png','');
+      img.alt = '';
       img.className = 'logo';
       card.appendChild(img);
       container.appendChild(card);
