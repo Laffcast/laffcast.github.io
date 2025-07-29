@@ -2,117 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laffcast Archive</title>
   <!-- Favicon -->
   <link rel="icon" href="assets/LC-logo-small.png" type="image/png">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
   <style>
     /* Reset & Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; min-height: 100%; background: #000; color: #fff; }
+    html, body { width: 100%; min-height: 100%; background-color: #000; color: #fff; }
     body { font-family: 'Open Sans', sans-serif; }
     a { text-decoration: none; color: inherit; }
 
     /* Shared container */
-    .container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
 
     /* Header */
-    .header { text-align: center; padding: 2rem 0 1rem; }
-    .brand { display: inline-flex; align-items: center; justify-content: center; }
-    .brand img.mascot { max-height: 200px; margin-right: 1rem; }
-    .brand .titles { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .header {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand img.mascot {
+      max-height: 200px;
+      margin-right: 1rem;
+    }
+    .brand .titles {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
     .brand .titles img.title { max-height: 160px; }
     .brand .titles img.subtitle { max-height: 40px; opacity: 0.8; }
 
     /* Logo Grid */
-    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; }
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2,1fr); } }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
 
     .show-card {
-      background: #000;
+      background-color: #000;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      aspect-ratio: 1/1;
-      cursor: default;
+      aspect-ratio: 1 / 1;
+      transition: transform 0.2s;
+    }
+    .show-card:hover {
+      transform: translateY(-4px) scale(1.02);
     }
     .show-card img.logo {
-      width: 150px;
-      height: 150px;
+      width: 60%;
+      height: auto;
       object-fit: contain;
     }
-    /* APAH uses same placeholder but CSS scales it bigger */
     .show-card.apah img.logo {
-      width: 150px;
-      height: auto;
-      max-height: none;
+      width: 80%;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <div class="header">
-    <div class="container">
-      <div class="brand">
-        <img src="assets/LC-logo-small.png" alt="Mascot" class="mascot">
-        <div class="titles">
-          <img src="assets/LCP-logo.png" alt="Laffcast" class="title">
-          <img src="assets/archive-logo.png" alt="Archive" class="subtitle">
-        </div>
+  <header class="header container">
+    <div class="brand">
+      <img src="assets/LC-logo-small.png" alt="Octopus Mascot" class="mascot">
+      <div class="titles">
+        <img src="assets/LCP-logo.png" alt="Laffcast Title" class="title">
+        <img src="assets/archive-logo.png" alt="Archive Subtitle" class="subtitle">
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- Logo Grid -->
-  <div class="container">
+  <section class="container">
     <div class="grid" id="shows-container"></div>
-  </div>
+  </section>
 
-  <!-- JS Injection -->
   <script>
     const shows = [
       // Column 1
-      { id:'KMS' },
-      { id:'TDS' },
-      { id:'DR' },
-      { id:'MSW' },
-      { id:'RR' },
-      { id:'APAH' },
-      { id:'JKS' },
-      { id:'MWT' },
-      { id:'DDP' },
+      { id: 'KM', logo: 'logos/KM-logo.png' },
+      { id: 'TDS', logo: 'logos/TDS-logo.png' },
+      { id: 'DR', logo: 'logos/DR-logo.png' },
+      { id: 'MSW', logo: 'logos/MSW-logo.png' },
+      { id: 'RR', logo: 'logos/RR-logo.png' },
+      { id: 'APAH', logo: 'logos/APAH-logo.png' },
+      { id: 'JKS', logo: 'logos/JKS-logo.png' },
+      { id: 'MWOT', logo: 'logos/MWOT-logo.png' },
+      { id: 'DDP', logo: 'logos/DDP-logo.png' },
       // Column 2
-      { id:'TPH' },
-      { id:'BADP' },
-      { id:'ET' },
-      { id:'SOL' },
-      { id:'RS' },
-      { id:'PAH' },
-      { id:'TTT' },
-      { id:'TDL' },
-      { id:'WMCJ' },
+      { id: 'TPH', logo: 'logos/TPH-logo.png' },
+      { id: 'BADATP', logo: 'logos/BADATP-logo.png' },
+      { id: 'ETC', logo: 'logos/ETC-logo.png' },
+      { id: 'SoL', logo: 'logos/SoL-logo.png' },
+      { id: 'RS', logo: 'logos/RS-logo.png' },
+      { id: 'TPAH', logo: 'logos/TPAH-logo.png' },
+      { id: 'TTT', logo: 'logos/TTT-logo.png' },
+      { id: 'TDL', logo: 'logos/TDL-logo.png' },
+      { id: 'WMCJ', logo: 'logos/WMCJ-logo.png' },
       // Column 3
-      { id:'VA' },
-      { id:'DAO' },
-      { id:'MSS' },
-      { id:'TTO' },
-      { id:'BD' },
-      { id:'TDP' },
-      { id:'SG' },
-      { id:'DCDMS' },
-      { id:'BS' }
+      { id: 'VA', logo: 'logos/VA-logo.png' },
+      { id: 'DAOR', logo: 'logos/DAOR-logo.png' },
+      { id: 'MSS', logo: 'logos/MSS-logo.png' },
+      { id: 'TTO', logo: 'logos/TTO-logo.png' },
+      { id: 'TBD', logo: 'logos/TBD-logo.png' },
+      { id: 'TDP', logo: 'logos/TDP-logo.png' },
+      { id: 'SG', logo: 'logos/SG-logo.png' },
+      { id: 'DCDMTS', logo: 'logos/DCDMTS-logo.png' },
+      { id: 'BS', logo: 'logos/BS-logo.png' }
     ];
+
     const container = document.getElementById('shows-container');
-    shows.forEach(s => {
+    shows.forEach(show => {
       const card = document.createElement('div');
-      card.className = 'show-card' + (s.id==='APAH'?' apah':'');
+      card.className = 'show-card' + (show.id === 'APAH' ? ' apah' : '');
       const img = document.createElement('img');
-      img.src = `https://via.placeholder.com/150x150?text=${s.id}`;
-      img.alt = s.id;
+      img.src = 'assets/' + show.logo;
+      img.alt = show.id + ' Logo';
       img.className = 'logo';
       card.appendChild(img);
       container.appendChild(card);
