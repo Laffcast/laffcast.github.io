@@ -4,63 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laffcast Archive</title>
-  <!-- Favicon -->
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
   <style>
-    /* Reset & Base */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; min-height: 100%; background: #000; color: #fff; }
-    body { font-family: 'Open Sans', sans-serif; }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html, body { width:100%; min-height:100%; background:#000; color:#fff; font-family:'Open Sans',sans-serif; }
+    .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
+    .header { text-align:center; padding:2rem 0 1rem; }
+    .brand { display:inline-flex; align-items:center; justify-content:center; }
+    .brand img.mascot { max-height:220px; margin-right:1rem; }
+    .titles { display:flex; flex-direction:column; align-items:center; gap:0.25rem; }
+    .titles img.title { max-height:160px; }
+    .titles img.subtitle { max-height:40px; opacity:0.8; }
 
-    /* Container */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-
-    /* Header */
-    .header { text-align: center; padding: 2rem 0 1rem; }
-    .brand { display: inline-flex; align-items: center; justify-content: center; }
-    .brand img.mascot { max-height: 200px; margin-right: 1rem; }
-    .titles { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
-    .titles img.title { max-height: 160px; }
-    .titles img.subtitle { max-height: 40px; opacity: 0.8; }
-
-    /* Grid */
     .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-flow: column;
-      grid-template-rows: repeat(9, auto);
-      gap: 0.125rem;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      grid-auto-flow:column;
+      grid-template-rows:repeat(9,auto);
+      column-gap:1in;
+      row-gap:1in;
     }
-    @media (max-width: 900px) {
+    @media(max-width:900px) {
       .grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-flow: row;
-        grid-template-rows: none;
+        grid-template-columns:repeat(2,1fr);
+        grid-auto-flow:row;
+        grid-template-rows:none;
+        column-gap:1in;
+        row-gap:1in;
       }
     }
-    @media (max-width: 600px) {
-      .grid { grid-template-columns: 1fr; }
+    @media(max-width:600px) {
+      .grid {
+        grid-template-columns:1fr;
+        column-gap:1in;
+        row-gap:1in;
+      }
     }
 
     .show-card {
-      background: #000;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 1 / 1;
+      background:#000;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      aspect-ratio:1/1;
     }
     .show-card img.logo {
-      width: 80%;
-      height: auto;
-      object-fit: contain;
+      width:80%;
+      height:auto;
+      object-fit:contain;
     }
     .show-card.apah img.logo {
-      width: 150px;
-      height: auto;
+      width:150px;
+      height:auto;
     }
   </style>
 </head>
@@ -79,26 +77,23 @@
   </main>
   <script>
     const shows = [
-      // Column 1 then APAH at bottom left
       'logos/KM-logo.png','logos/TDS-logo.png','logos/DR-logo.png',
       'logos/MSW-logo.png','logos/RR-logo.png','logos/JKS-logo.png',
       'logos/MWOT-logo.png','logos/DDP-logo.png','logos/APAH-logo.png',
-      // Column 2
       'logos/TPH-logo.png','logos/BADATP-logo.png','logos/ETC-logo.png',
       'logos/SoLR-logo.png','logos/RS-logo.png','logos/TPAH-logo.png',
       'logos/TTT-logo.png','logos/TDL-logo.png','logos/WMCJ-logo.png',
-      // Column 3
       'logos/VA-logo.png','logos/DAOR-logo.png','logos/MSS-logo.png',
       'logos/TTO-logo.png','logos/TBD-logo.png','logos/TDP-logo.png',
       'logos/SG-logo.png','logos/DCDMTS-logo.png','logos/BS-logo.png'
     ];
     const container = document.getElementById('shows-container');
-    shows.forEach((logoPath, idx) => {
+    shows.forEach((path, idx) => {
       const card = document.createElement('div');
       card.className = 'show-card' + (idx === 8 ? ' apah' : '');
       const img = document.createElement('img');
-      img.src = 'assets/' + logoPath;
-      img.alt = logoPath.split('/')[1].replace('-logo.png','');
+      img.src = 'assets/' + path; 
+      img.alt = path.split('/')[1].replace('-logo.png','');
       img.className = 'logo';
       card.appendChild(img);
       container.appendChild(card);
