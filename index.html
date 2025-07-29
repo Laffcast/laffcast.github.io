@@ -4,135 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laffcast Archive</title>
-  <!-- Favicon -->
-  <link rel="icon" href="assets/LC-logo-small.png" type="image/png">
-  <!-- Google Font -->
+  <link rel="icon" href="/assets/LC-logo-small.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
   <style>
-    /* Reset & Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; min-height: 100%; background-color: #000; color: #fff; }
+    html, body { width: 100%; min-height: 100%; background: #000; color: #fff; }
     body { font-family: 'Open Sans', sans-serif; }
-    a { text-decoration: none; color: inherit; }
-
-    /* Shared container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    /* Header */
-    .header {
-      text-align: center;
-      padding: 2rem 0 1rem;
-    }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .brand img.mascot {
-      max-height: 200px;
-      margin-right: 1rem;
-    }
-    .brand .titles {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    .header { text-align: center; padding: 2rem 0 1rem; }
+    .brand { display: inline-flex; align-items: center; justify-content: center; }
+    .brand img.mascot { max-height: 200px; margin-right: 1rem; }
+    .brand .titles { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
     .brand .titles img.title { max-height: 160px; }
     .brand .titles img.subtitle { max-height: 40px; opacity: 0.8; }
-
-    /* Logo Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.5rem;
-    }
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: repeat(9, auto);
+            grid-auto-flow: column; gap: 0.25rem; }
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2,1fr); grid-template-rows: none; grid-auto-flow: row; } }
     @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-
-    .show-card {
-      background-color: #000;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 1 / 1;
-      transition: transform 0.2s;
-    }
-    .show-card:hover {
-      transform: translateY(-4px) scale(1.02);
-    }
-    .show-card img.logo {
-      width: 60%;
-      height: auto;
-      object-fit: contain;
-    }
-    .show-card.apah img.logo {
-      width: 80%;
-    }
+    .show-card { background: #000; border-radius: 8px; display:flex; align-items:center; justify-content:center; aspect-ratio:1/1; }
+    .show-card img.logo { width: 80%; height: auto; object-fit: contain; }
+    .show-card.apah img.logo { width: 150px; height: auto; }
   </style>
 </head>
 <body>
   <header class="header container">
     <div class="brand">
-      <img src="assets/LC-logo-small.png" alt="Octopus Mascot" class="mascot">
+      <img src="/assets/LC-logo-small.png" alt="Octopus Mascot" class="mascot">
       <div class="titles">
-        <img src="assets/LCP-logo.png" alt="Laffcast Title" class="title">
-        <img src="assets/archive-logo.png" alt="Archive Subtitle" class="subtitle">
+        <img src="/assets/LCP-logo.png" alt="Laffcast Title" class="title">
+        <img src="/assets/archive-logo.png" alt="Archive Subtitle" class="subtitle">
       </div>
     </div>
   </header>
-
   <section class="container">
     <div class="grid" id="shows-container"></div>
   </section>
-
   <script>
     const shows = [
-      // Column 1
-      { id: 'KM', logo: 'logos/KM-logo.png' },
-      { id: 'TDS', logo: 'logos/TDS-logo.png' },
-      { id: 'DR', logo: 'logos/DR-logo.png' },
-      { id: 'MSW', logo: 'logos/MSW-logo.png' },
-      { id: 'RR', logo: 'logos/RR-logo.png' },
-      { id: 'APAH', logo: 'logos/APAH-logo.png' },
-      { id: 'JKS', logo: 'logos/JKS-logo.png' },
-      { id: 'MWOT', logo: 'logos/MWOT-logo.png' },
-      { id: 'DDP', logo: 'logos/DDP-logo.png' },
+      // Column 1 without APAH, then APAH last
+      { logo: 'logos/KM-logo.png' },
+      { logo: 'logos/TDS-logo.png' },
+      { logo: 'logos/DR-logo.png' },
+      { logo: 'logos/MSW-logo.png' },
+      { logo: 'logos/RR-logo.png' },
+      { logo: 'logos/JKS-logo.png' },
+      { logo: 'logos/MWOT-logo.png' },
+      { logo: 'logos/DDP-logo.png' },
+      { logo: 'logos/APAH-logo.png', special: true },
       // Column 2
-      { id: 'TPH', logo: 'logos/TPH-logo.png' },
-      { id: 'BADATP', logo: 'logos/BADATP-logo.png' },
-      { id: 'ETC', logo: 'logos/ETC-logo.png' },
-      { id: 'SoL', logo: 'logos/SoL-logo.png' },
-      { id: 'RS', logo: 'logos/RS-logo.png' },
-      { id: 'TPAH', logo: 'logos/TPAH-logo.png' },
-      { id: 'TTT', logo: 'logos/TTT-logo.png' },
-      { id: 'TDL', logo: 'logos/TDL-logo.png' },
-      { id: 'WMCJ', logo: 'logos/WMCJ-logo.png' },
+      { logo: 'logos/TPH-logo.png' },
+      { logo: 'logos/BADATP-logo.png' },
+      { logo: 'logos/ETC-logo.png' },
+      { logo: 'logos/SoL-logo.png' },
+      { logo: 'logos/RS-logo.png' },
+      { logo: 'logos/TPAH-logo.png' },
+      { logo: 'logos/TTT-logo.png' },
+      { logo: 'logos/TDL-logo.png' },
+      { logo: 'logos/WMCJ-logo.png' },
       // Column 3
-      { id: 'VA', logo: 'logos/VA-logo.png' },
-      { id: 'DAOR', logo: 'logos/DAOR-logo.png' },
-      { id: 'MSS', logo: 'logos/MSS-logo.png' },
-      { id: 'TTO', logo: 'logos/TTO-logo.png' },
-      { id: 'TBD', logo: 'logos/TBD-logo.png' },
-      { id: 'TDP', logo: 'logos/TDP-logo.png' },
-      { id: 'SG', logo: 'logos/SG-logo.png' },
-      { id: 'DCDMTS', logo: 'logos/DCDMTS-logo.png' },
-      { id: 'BS', logo: 'logos/BS-logo.png' }
+      { logo: 'logos/VA-logo.png' },
+      { logo: 'logos/DAOR-logo.png' },
+      { logo: 'logos/MSS-logo.png' },
+      { logo: 'logos/TTO-logo.png' },
+      { logo: 'logos/TBD-logo.png' },
+      { logo: 'logos/TDP-logo.png' },
+      { logo: 'logos/SG-logo.png' },
+      { logo: 'logos/DCDMTS-logo.png' },
+      { logo: 'logos/BS-logo.png' }
     ];
-
     const container = document.getElementById('shows-container');
-    shows.forEach(show => {
+    shows.forEach(item => {
       const card = document.createElement('div');
-      card.className = 'show-card' + (show.id === 'APAH' ? ' apah' : '');
+      card.className = 'show-card' + (item.special ? ' apah' : '');
       const img = document.createElement('img');
-      img.src = 'assets/' + show.logo;
-      img.alt = show.id + ' Logo';
+      img.src = '/assets/' + item.logo;
+      img.alt = 'Show Logo';
       img.className = 'logo';
       card.appendChild(img);
       container.appendChild(card);
