@@ -1,0 +1,131 @@
+/* Laffcast Archive Player — compact, centered, neon-friendly */
+.km-archive {
+  max-width: 44em;
+  margin: 1.25rem auto;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  background: #0b0b0b;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.km-archive__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.km-archive__title {
+  font-size: 1.125rem;
+  opacity: 0.9;
+  letter-spacing: 0.02em;
+}
+
+.km-archive__player {
+  margin: 0.5rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.km-archive audio {
+  width: 100%;
+  outline: none;
+  border-radius: 0.5rem;
+  background: #111;
+}
+
+.km-nowplaying {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.km-pill {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(148, 242, 80, 0.12);
+  border: 1px solid rgba(148, 242, 80, 0.35);
+  color: #94F250;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.km-ep-title { font-weight: 600; }
+.km-ep-date { opacity: 0.7; }
+
+.km-episodes__title {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+  text-align: center;
+}
+
+.km-episodes__list {
+  max-height: 14rem;
+  overflow: auto;
+  display: grid;
+  gap: 0.4rem;
+  padding-right: 0.25rem;
+}
+
+.km-ep {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 0.75rem;
+  align-items: center;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  background: #151515;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.km-ep:hover, .km-ep:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+.km-ep--active {
+  border-color: rgba(148, 242, 80, 0.7);
+  box-shadow: 0 0 20px rgba(148, 242, 80, 0.25);
+}
+
+.km-ep__title { font-size: 0.95rem; font-weight: 600; }
+.km-ep__meta  { font-size: 0.85rem; opacity: 0.7; justify-self: end; }
+
+.km-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.75rem auto 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: #121212;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.km-btn:hover, .km-btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+.km-error {
+  margin-top: 1rem;
+  color: #ff9aa2;
+  text-align: center;
+}
